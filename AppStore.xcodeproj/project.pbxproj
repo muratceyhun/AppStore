@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4345CF4029FAD6250059F907 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4345CF3F29FAD6250059F907 /* SearchResultCell.swift */; };
 		434D14E629F867C5003C7216 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434D14E529F867C5003C7216 /* AppDelegate.swift */; };
 		434D14E829F867C5003C7216 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434D14E729F867C5003C7216 /* SceneDelegate.swift */; };
 		434D14EA29F867C5003C7216 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434D14E929F867C5003C7216 /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4345CF3F29FAD6250059F907 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		434D14E229F867C5003C7216 /* AppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		434D14E529F867C5003C7216 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		434D14E729F867C5003C7216 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +41,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4345CF3E29FAD6040059F907 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4345CF3F29FAD6250059F907 /* SearchResultCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4345CF4129FB13BA0059F907 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		434D14D929F867C5003C7216 = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +75,8 @@
 		434D14E429F867C5003C7216 /* AppStore */ = {
 			isa = PBXGroup;
 			children = (
+				4345CF4129FB13BA0059F907 /* Helpers */,
+				4345CF3E29FAD6040059F907 /* Views */,
 				434EB9B929F9DA6200418A96 /* Controller */,
 				434D14E529F867C5003C7216 /* AppDelegate.swift */,
 				434D14E729F867C5003C7216 /* SceneDelegate.swift */,
@@ -152,6 +171,7 @@
 				434D14E629F867C5003C7216 /* AppDelegate.swift in Sources */,
 				434EB9B829F99A5C00418A96 /* MainTabBarController.swift in Sources */,
 				434EB9BB29F9DAAF00418A96 /* AppsSearchController.swift in Sources */,
+				4345CF4029FAD6250059F907 /* SearchResultCell.swift in Sources */,
 				434D14E829F867C5003C7216 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
