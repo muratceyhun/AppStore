@@ -10,26 +10,65 @@ import UIKit
 class AppsSearchController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     fileprivate let cellID = "cell1234"
-    
+    fileprivate var appResults = [Result]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView.register(SearchResultCell.self, forCellWithReuseIdentifier: cellID)
         collectionView.backgroundColor = .white
+        fetchItunesApps()
+    }
+    
+    
+    
+    fileprivate func fetchItunesApps() {
+        
+        let urlString = "https://itunes.apple.com/search?term=instagram&entity=software"
+        guard let url = URL(string: urlString) else {return}
+        URLSession.shared.dataTask(with: url) { data, response , error in
+            
+            if let error = error {
+                print("ERROR : \(error)")
+                return
+            }
+            
+            //            print(data)
+            //            print(String(data: data!, encoding: .utf8))
+            
+            guard let data = data else {return}
+            do {
+                let searchResult = try JSONDecoder().decode(SearchResult.self, from: data)
+                
+                self.appResults = searchResult.results
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+
+//                print(searchResult.results)
+//                searchResult.results.forEach {(print($0.trackName, "|", $0.primaryGenreName))}
+            } catch {
+                print("ERROR: \(error)")
+            }
+        }.resume()
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
+        appResults.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! SearchResultCell
+        let appResult = appResults[indexPath.item]
+        cell.nameLabel.text = appResult.trackName
+        cell.categoryLabel.text = appResult.primaryGenreName
+        cell.ratingsLabel.text = "Rating: \(appResult.averageUserRating ?? .zero)"
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: view.frame.width, height: 300)
+        //        return CGSize(width: view.frame.width, height: 300)
         return .init(width: view.frame.width, height: 350)
     }
     
