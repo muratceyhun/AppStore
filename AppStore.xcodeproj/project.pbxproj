@@ -18,6 +18,7 @@
 		434EB9B829F99A5C00418A96 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434EB9B729F99A5C00418A96 /* MainTabBarController.swift */; };
 		434EB9BB29F9DAAF00418A96 /* AppsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434EB9BA29F9DAAF00418A96 /* AppsSearchController.swift */; };
 		439F0EC529FC449A00440EF9 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439F0EC429FC449A00440EF9 /* SearchResult.swift */; };
+		439F0EC829FC6AFA00440EF9 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439F0EC729FC6AFA00440EF9 /* Service.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		434EB9B729F99A5C00418A96 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		434EB9BA29F9DAAF00418A96 /* AppsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsSearchController.swift; sourceTree = "<group>"; };
 		439F0EC429FC449A00440EF9 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		439F0EC729FC6AFA00440EF9 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 		434D14E429F867C5003C7216 /* AppStore */ = {
 			isa = PBXGroup;
 			children = (
+				439F0EC629FC6AED00440EF9 /* Service */,
 				439F0EC329FC448B00440EF9 /* Model */,
 				4345CF4129FB13BA0059F907 /* Helpers */,
 				4345CF3E29FAD6040059F907 /* Views */,
@@ -112,6 +115,14 @@
 				439F0EC429FC449A00440EF9 /* SearchResult.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		439F0EC629FC6AED00440EF9 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				439F0EC729FC6AFA00440EF9 /* Service.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,6 +202,7 @@
 				434EB9BB29F9DAAF00418A96 /* AppsSearchController.swift in Sources */,
 				4345CF4029FAD6250059F907 /* SearchResultCell.swift in Sources */,
 				4345CF4529FB2D470059F907 /* VerticalStackView.swift in Sources */,
+				439F0EC829FC6AFA00440EF9 /* Service.swift in Sources */,
 				4345CF4329FB16530059F907 /* UIView+Layout.swift in Sources */,
 				434D14E829F867C5003C7216 /* SceneDelegate.swift in Sources */,
 			);

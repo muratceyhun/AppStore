@@ -23,34 +23,18 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
     
     
     fileprivate func fetchItunesApps() {
-        
-        let urlString = "https://itunes.apple.com/search?term=instagram&entity=software"
-        guard let url = URL(string: urlString) else {return}
-        URLSession.shared.dataTask(with: url) { data, response , error in
+        Service.shared.fetchApps { results, error in
             
             if let error = error {
                 print("ERROR : \(error)")
                 return
             }
-            
-            //            print(data)
-            //            print(String(data: data!, encoding: .utf8))
-            
-            guard let data = data else {return}
-            do {
-                let searchResult = try JSONDecoder().decode(SearchResult.self, from: data)
-                
-                self.appResults = searchResult.results
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-
-//                print(searchResult.results)
-//                searchResult.results.forEach {(print($0.trackName, "|", $0.primaryGenreName))}
-            } catch {
-                print("ERROR: \(error)")
+            self.appResults = results
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
             }
-        }.resume()
+        }
+
         
     }
     
