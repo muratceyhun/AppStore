@@ -16,7 +16,7 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
         super.viewDidLoad()
         
         collectionView.register(SearchResultCell.self, forCellWithReuseIdentifier: cellID)
-        collectionView.backgroundColor = .yellow
+        collectionView.backgroundColor = .white
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -30,7 +30,7 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 //        return CGSize(width: view.frame.width, height: 300)
-        return .init(width: view.frame.width, height: 300)
+        return .init(width: view.frame.width, height: 350)
     }
     
     init() {
