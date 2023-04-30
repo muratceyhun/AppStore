@@ -9,12 +9,29 @@ import UIKit
 
 class SearchResultCell: UICollectionViewCell {
     
+    var appResult: Result! {
+        didSet {
+            nameLabel.text = appResult.trackName
+            categoryLabel.text = appResult.primaryGenreName
+            ratingsLabel.text = "Rating: \(appResult.averageUserRating ?? .zero)"
+            let urlAppIcon = URL(string: appResult.artworkUrl100 ?? "")
+            appIconImageView.sd_setImage(with: urlAppIcon)
+            let urlScreenShots1 = URL(string: appResult.screenshotUrls![0] )
+            screenShot1ImageView.sd_setImage(with: urlScreenShots1)
+            let urlScreenShots2 = URL(string: appResult.screenshotUrls![1] )
+            screenShot2ImageView.sd_setImage(with: urlScreenShots2)
+            let urlScreenShots3 = URL(string: appResult.screenshotUrls![2] )
+            screenShot3ImageView.sd_setImage(with: urlScreenShots3)
+        }
+    }
+    
     let appIconImageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .red
         iv.widthAnchor.constraint(equalToConstant: 64).isActive = true
         iv.heightAnchor.constraint(equalToConstant: 64).isActive = true
         iv.layer.cornerRadius = 12
+        iv.clipsToBounds = true
         return iv
     }()
     
@@ -57,6 +74,10 @@ class SearchResultCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.backgroundColor = .purple
         imageView.layer.cornerRadius = 16
+        imageView.clipsToBounds = true
+        imageView.layer.borderWidth = 0.6
+        imageView.layer.borderColor = UIColor(white: 0.5, alpha: 0.5).cgColor
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }
     

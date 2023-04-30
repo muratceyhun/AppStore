@@ -12,7 +12,6 @@ class Service {
     static let shared = Service()
     
     func fetchApps(completion: @escaping ([Result], Error?) -> ()) {
-        print("555555")
         let urlString = "https://itunes.apple.com/search?term=instagram&entity=software"
         guard let url = URL(string: urlString) else {return}
         URLSession.shared.dataTask(with: url) { data, response , error in
@@ -32,7 +31,7 @@ class Service {
                 completion(searchResult.results, nil)
 
 //                print(searchResult.results)
-                searchResult.results.forEach {(print($0.trackName, "|", $0.primaryGenreName))}
+//                searchResult.results.forEach {(print($0.trackName, "|", $0.primaryGenreName))}
             } catch {
                 print("ERROR: \(error)")
                 completion([], error)
