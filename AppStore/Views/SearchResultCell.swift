@@ -16,18 +16,29 @@ class SearchResultCell: UICollectionViewCell {
             ratingsLabel.text = "Rating: \(appResult.averageUserRating ?? .zero)"
             let urlAppIcon = URL(string: appResult.artworkUrl100 ?? "")
             appIconImageView.sd_setImage(with: urlAppIcon)
-            let urlScreenShots1 = URL(string: appResult.screenshotUrls![0] )
-            screenShot1ImageView.sd_setImage(with: urlScreenShots1)
-            let urlScreenShots2 = URL(string: appResult.screenshotUrls![1] )
-            screenShot2ImageView.sd_setImage(with: urlScreenShots2)
-            let urlScreenShots3 = URL(string: appResult.screenshotUrls![2] )
-            screenShot3ImageView.sd_setImage(with: urlScreenShots3)
+            
+            if appResult.screenshotUrls.count > 0 {
+                let urlScreenShots1 = URL(string: appResult.screenshotUrls[0] )
+                screenShot1ImageView.sd_setImage(with: urlScreenShots1)
+            }
+            
+            if appResult.screenshotUrls.count > 1 {
+                let urlScreenShots2 = URL(string: appResult.screenshotUrls[1] )
+                screenShot2ImageView.sd_setImage(with: urlScreenShots2)
+            }
+            
+            if appResult.screenshotUrls.count > 2 {
+                 let urlScreenShots3 = URL(string: appResult.screenshotUrls[2] )
+                 screenShot3ImageView.sd_setImage(with: urlScreenShots3)
+            }
+            
+        
         }
     }
     
     let appIconImageView: UIImageView = {
         let iv = UIImageView()
-        iv.backgroundColor = .red
+        iv.backgroundColor = .white
         iv.widthAnchor.constraint(equalToConstant: 64).isActive = true
         iv.heightAnchor.constraint(equalToConstant: 64).isActive = true
         iv.layer.cornerRadius = 12
@@ -72,7 +83,7 @@ class SearchResultCell: UICollectionViewCell {
     
     func crateScreenShotImageView() -> UIImageView{
         let imageView = UIImageView()
-        imageView.backgroundColor = .purple
+        imageView.backgroundColor = .white
         imageView.layer.cornerRadius = 16
         imageView.clipsToBounds = true
         imageView.layer.borderWidth = 0.6
