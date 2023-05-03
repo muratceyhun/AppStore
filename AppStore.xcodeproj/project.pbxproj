@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		124ADB30E50F70A19A871500 /* Pods_AppStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D24F039138F1C226613EA333 /* Pods_AppStore.framework */; };
-		432395732A0015DB00FE0008 /* AppsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432395722A0015DB00FE0008 /* AppsController.swift */; };
+		432395732A0015DB00FE0008 /* AppsPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432395722A0015DB00FE0008 /* AppsPageController.swift */; };
 		432395752A0016BC00FE0008 /* BaseListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432395742A0016BC00FE0008 /* BaseListController.swift */; };
 		4323957B2A001B0700FE0008 /* AppsGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4323957A2A001B0700FE0008 /* AppsGroupCell.swift */; };
 		4323957D2A0025D500FE0008 /* AppsHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4323957C2A0025D500FE0008 /* AppsHorizontalController.swift */; };
@@ -23,13 +23,16 @@
 		434D14F229F867C6003C7216 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 434D14F029F867C6003C7216 /* LaunchScreen.storyboard */; };
 		434EB9B829F99A5C00418A96 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434EB9B729F99A5C00418A96 /* MainTabBarController.swift */; };
 		434EB9BB29F9DAAF00418A96 /* AppsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434EB9BA29F9DAAF00418A96 /* AppsSearchController.swift */; };
+		435EF7052A02D60D008F841A /* AppsPageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435EF7042A02D60D008F841A /* AppsPageHeader.swift */; };
+		435EF7072A02DC77008F841A /* AppsHeaderHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435EF7062A02DC77008F841A /* AppsHeaderHorizontalController.swift */; };
+		435EF7092A02DFE9008F841A /* AppsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435EF7082A02DFE9008F841A /* AppsHeaderCell.swift */; };
 		439C9FEE2A017D0800D5F52A /* Convenience Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439C9FED2A017D0800D5F52A /* Convenience Init.swift */; };
 		439F0EC529FC449A00440EF9 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439F0EC429FC449A00440EF9 /* SearchResult.swift */; };
 		439F0EC829FC6AFA00440EF9 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439F0EC729FC6AFA00440EF9 /* Service.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		432395722A0015DB00FE0008 /* AppsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsController.swift; sourceTree = "<group>"; };
+		432395722A0015DB00FE0008 /* AppsPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsPageController.swift; sourceTree = "<group>"; };
 		432395742A0016BC00FE0008 /* BaseListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListController.swift; sourceTree = "<group>"; };
 		4323957A2A001B0700FE0008 /* AppsGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsGroupCell.swift; sourceTree = "<group>"; };
 		4323957C2A0025D500FE0008 /* AppsHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHorizontalController.swift; sourceTree = "<group>"; };
@@ -46,6 +49,9 @@
 		434D14F329F867C6003C7216 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		434EB9B729F99A5C00418A96 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		434EB9BA29F9DAAF00418A96 /* AppsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsSearchController.swift; sourceTree = "<group>"; };
+		435EF7042A02D60D008F841A /* AppsPageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsPageHeader.swift; sourceTree = "<group>"; };
+		435EF7062A02DC77008F841A /* AppsHeaderHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderHorizontalController.swift; sourceTree = "<group>"; };
+		435EF7082A02DFE9008F841A /* AppsHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderCell.swift; sourceTree = "<group>"; };
 		439C9FED2A017D0800D5F52A /* Convenience Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Convenience Init.swift"; sourceTree = "<group>"; };
 		439F0EC429FC449A00440EF9 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		439F0EC729FC6AFA00440EF9 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
@@ -69,8 +75,9 @@
 		432395712A0015C300FE0008 /* Apps */ = {
 			isa = PBXGroup;
 			children = (
-				432395722A0015DB00FE0008 /* AppsController.swift */,
+				432395722A0015DB00FE0008 /* AppsPageController.swift */,
 				4323957C2A0025D500FE0008 /* AppsHorizontalController.swift */,
+				435EF7062A02DC77008F841A /* AppsHeaderHorizontalController.swift */,
 			);
 			path = Apps;
 			sourceTree = "<group>";
@@ -96,6 +103,8 @@
 			children = (
 				4323957A2A001B0700FE0008 /* AppsGroupCell.swift */,
 				4323957E2A0044F700FE0008 /* AppRowCell.swift */,
+				435EF7042A02D60D008F841A /* AppsPageHeader.swift */,
+				435EF7082A02DFE9008F841A /* AppsHeaderCell.swift */,
 			);
 			path = Apps;
 			sourceTree = "<group>";
@@ -314,7 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				434D14EA29F867C5003C7216 /* ViewController.swift in Sources */,
-				432395732A0015DB00FE0008 /* AppsController.swift in Sources */,
+				432395732A0015DB00FE0008 /* AppsPageController.swift in Sources */,
 				439C9FEE2A017D0800D5F52A /* Convenience Init.swift in Sources */,
 				439F0EC529FC449A00440EF9 /* SearchResult.swift in Sources */,
 				434D14E629F867C5003C7216 /* AppDelegate.swift in Sources */,
@@ -323,9 +332,12 @@
 				4323957B2A001B0700FE0008 /* AppsGroupCell.swift in Sources */,
 				4345CF4029FAD6250059F907 /* SearchResultCell.swift in Sources */,
 				4345CF4529FB2D470059F907 /* VerticalStackView.swift in Sources */,
+				435EF7072A02DC77008F841A /* AppsHeaderHorizontalController.swift in Sources */,
+				435EF7052A02D60D008F841A /* AppsPageHeader.swift in Sources */,
 				439F0EC829FC6AFA00440EF9 /* Service.swift in Sources */,
 				4345CF4329FB16530059F907 /* UIView+Layout.swift in Sources */,
 				432395752A0016BC00FE0008 /* BaseListController.swift in Sources */,
+				435EF7092A02DFE9008F841A /* AppsHeaderCell.swift in Sources */,
 				434D14E829F867C5003C7216 /* SceneDelegate.swift in Sources */,
 				4323957D2A0025D500FE0008 /* AppsHorizontalController.swift in Sources */,
 				4323957F2A0044F700FE0008 /* AppRowCell.swift in Sources */,
