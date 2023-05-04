@@ -38,4 +38,33 @@ class Service {
             }
         }.resume()
     }
+    
+    
+    func fetchPopularFreeApps(completion: @escaping (AppGroup?, Error?) -> ()) {
+        
+        guard let url = URL(string: "https://rss.applemarketingtools.com/api/v2/tr/apps/top-free/50/apps.json") else {return}
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            
+            if let error = error {
+                completion(nil, error)
+                print("ERROR: \(error)")
+            }
+            guard let data = data else {return}
+//            print(data)
+//            print(String(data: data!, encoding: .utf8))
+            
+            do {
+              let appGroup = try JSONDecoder().decode(AppGroup.self, from: data)
+//                print(appGroup.feed.results)
+//                appGroup.feed.results.forEach {print($0.name)}
+                completion(appGroup, nil)
+
+            } catch {
+                print("ERROR : \(error)")
+                completion(nil, error)
+            }
+            
+        }.resume()
+    }
 }

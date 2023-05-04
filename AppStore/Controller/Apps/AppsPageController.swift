@@ -18,6 +18,19 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         
         collectionView.register(AppsGroupCell.self, forCellWithReuseIdentifier: cellID)
         collectionView.register(AppsPageheader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerID)
+        fetchData()
+    }
+    
+    fileprivate func fetchData() {
+        print("Fetching some data")
+        Service.shared.fetchPopularFreeApps { appGroup, error in
+            if let error = error {
+                print("ERROR: \(error)")
+            }
+            
+//            print(appGroup?.feed.results)
+            
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
