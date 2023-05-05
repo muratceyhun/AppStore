@@ -28,7 +28,7 @@ class AppsHorizontalController: BaseListController, UICollectionViewDelegateFlow
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! AppRowCell
-        var topFreeAppsItem = topFreeAppsItems?.feed.results[indexPath.item]
+        let topFreeAppsItem = topFreeAppsItems?.feed.results[indexPath.item]
         cell.nameLabel.text = topFreeAppsItem?.name
         cell.companyName.text = topFreeAppsItem?.artistName
         cell.imageView.sd_setImage(with: URL(string: topFreeAppsItem?.artworkUrl100 ?? ""))
