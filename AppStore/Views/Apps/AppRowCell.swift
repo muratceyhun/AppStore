@@ -25,6 +25,8 @@ class AppRowCell: UICollectionViewCell {
 //        imageView.heightAnchor.constraint(equalToConstant: 64).isActive = true
         imageView.constrainWidth(constant: 64)
         imageView.constrainHeight(constant: 64)
+        imageView.layer.borderWidth = 0.8
+        imageView.layer.borderColor = UIColor(white: 0.6, alpha: 0.6).cgColor
         let stackView = UIStackView(arrangedSubviews: [imageView,VerticalStackView(arrangedSubviews: [nameLabel, companyName], spacing: 4), getButton])
         stackView.spacing = 16
         stackView.alignment = .center

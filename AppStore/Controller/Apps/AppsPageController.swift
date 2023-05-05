@@ -12,6 +12,8 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
     let cellID = "id"
     let headerID = "headerID"
     
+    var topFreeApps: AppGroup?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .white
@@ -28,8 +30,10 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
                 print("ERROR: \(error)")
             }
             
-//            print(appGroup?.feed.results)
-            
+            self.topFreeApps = appGroup
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
         }
     }
     
@@ -45,12 +49,16 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
+        1
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! AppsGroupCell
+        cell.titleLabel.text = topFreeApps?.feed.title
+        cell.horizontalVC.topFreeAppsItems = topFreeApps
+        cell.horizontalVC.collectionView.reloadData()
         return cell
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
