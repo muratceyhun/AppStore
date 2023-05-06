@@ -81,4 +81,32 @@ class Service {
         let url = "https://rss.applemarketingtools.com/api/v2/us/podcasts/top/50/podcasts.json"
         fetchAppGroups(urlString: url, completion: completion)
     }
+    
+    func fetchHeaderItems(completion: @escaping ([HeaderResult], Error?) -> ()) {
+        let urlString = "https://api.letsbuildthatapp.com/appstore/social"
+        guard let url = URL(string: urlString) else {return}
+        URLSession.shared.dataTask(with: url) { data, response , error in
+            
+            if let error = error {
+                print("ERROR : \(error)")
+                completion([], nil)
+                return
+            }
+            
+            //            print(data)
+            //            print(String(data: data!, encoding: .utf8))
+            
+            guard let data = data else {return}
+            do {
+                let headerResult = try JSONDecoder().decode([HeaderResult].self, from: data)
+                completion(headerResult, nil)
+                
+                //                print(searchResult.results)
+                //                searchResult.results.forEach {(print($0.trackName, "|", $0.primaryGenreName))}
+            } catch {
+                print("ERROR: \(error)")
+                completion([], error)
+            }
+        }.resume()
+    }
 }

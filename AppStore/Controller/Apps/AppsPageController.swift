@@ -13,32 +13,42 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
     let headerID = "headerID"
     
     var groups = [AppGroup]()
+    var headerResults = [HeaderResult]()
+    
+    let activityIndicatorView: UIActivityIndicatorView = {
+        let aiv = UIActivityIndicatorView(style: .large)
+        aiv.color = .black
+        aiv.startAnimating()
+        aiv.hidesWhenStopped = true
+        return aiv
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .white
-        
         collectionView.register(AppsGroupCell.self, forCellWithReuseIdentifier: cellID)
         collectionView.register(AppsPageheader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerID)
+        view.addSubview(activityIndicatorView)
+        activityIndicatorView.fillSuperview()
         fetchData()
     }
     
     fileprivate func fetchData() {
-        
+
         var group1: AppGroup?
         var group2: AppGroup?
         var group3: AppGroup?
-
+        
         
         let dispatchGroup = DispatchGroup()
         
-//        dispatchGroup.enter()
-//        dispatchGroup.leave()
-    
+        //        dispatchGroup.enter()
+        //        dispatchGroup.leave()
         
+
         dispatchGroup.enter()
         Service.shared.fetchTopFreeApps { appGroup, error in
-            
+
             dispatchGroup.leave()
             print("TopFreeApp")
             if let error = error {
@@ -61,14 +71,28 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         Service.shared.fetchTopPodcasts { appGroup, error in
             dispatchGroup.leave()
             print("TopPodcast")
+
             if let error = error {
                 print("ERROR: \(error)")
             }
             group3 = appGroup
         }
+
+        
+        Service.shared.fetchHeaderItems { headerItems, error in
+            
+            if let error = error {
+                print("ERROR: \(error)")
+            }
+            
+            self.headerResults = headerItems
+        }
         
         dispatchGroup.notify(queue: .main) {
             print("Completed Dispatch Group Task...")
+            
+            self.activityIndicatorView.stopAnimating()
+
             if let group = group1 {
                 self.groups.append(group)
             }
@@ -83,13 +107,15 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerID, for: indexPath)
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerID, for: indexPath) as! AppsPageheader
+        header.appHeaderHorizontalController.headerItems = headerResults
+        header.appHeaderHorizontalController.collectionView.reloadData()
         return header
     }
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        .init(width: collectionView.frame.width, height: 0)
+        .init(width: collectionView.frame.width, height: 300)
     }
     
     
