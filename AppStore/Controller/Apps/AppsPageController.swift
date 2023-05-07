@@ -85,7 +85,7 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
                 print("ERROR: \(error)")
             }
             
-            self.headerResults = headerItems
+            self.headerResults = headerItems ?? []
         }
         
         dispatchGroup.notify(queue: .main) {
