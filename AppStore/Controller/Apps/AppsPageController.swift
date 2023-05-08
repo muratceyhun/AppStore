@@ -115,7 +115,7 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        .init(width: collectionView.frame.width, height: 300)
+        .init(width: collectionView.frame.width, height: 320)
     }
     
     

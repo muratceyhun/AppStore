@@ -22,6 +22,7 @@ class AppsHorizontalController: HorizontalSnappingController, UICollectionViewDe
 //        }
     }
     
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return topFreeAppsItems?.feed.results.count ?? .zero
     }
