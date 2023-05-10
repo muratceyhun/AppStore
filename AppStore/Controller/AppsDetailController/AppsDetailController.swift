@@ -11,14 +11,19 @@ class AppsDetailController: BaseListController, UICollectionViewDelegateFlowLayo
     
     let detailCellID = "detailCellID"
     
+    var items: SearchResult?
+    
     var appID: String! {
         didSet {
             print("HERE is my appID: \(appID ?? "")")
             let urlString = "https://itunes.apple.com/lookup?id=\(appID ?? "")"
             Service.shared.fetchGenericJSONData(urlString: urlString) { (detailResult: SearchResult?, err) in
-                print(detailResult?.results.first?.releaseNotes)
+                //                print(detailResult?.results.first?.releaseNotes)
+                self.items = detailResult
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
             }
-            
         }
     }
     
@@ -38,10 +43,15 @@ class AppsDetailController: BaseListController, UICollectionViewDelegateFlowLayo
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: detailCellID, for: indexPath) as! AppsDetailCell
+        let item = items?.results[indexPath.item]
+        cell.nameLabel.text = item?.trackName
+        cell.priceButton.setTitle(item?.formattedPrice, for: .normal)
+        cell.appIconImageView.sd_setImage(with: URL(string: item?.artworkUrl100 ?? ""))
+        cell.relaseNotLabel.text = item?.description
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        .init(width: view.frame.width, height: 300)
+        .init(width: view.frame.width, height: 500)
     }
 }
