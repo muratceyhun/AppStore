@@ -12,6 +12,8 @@ class AppsHorizontalController: HorizontalSnappingController, UICollectionViewDe
     let cellID = "Id"
     var topFreeAppsItems: AppGroup?
     
+    var didSelectHandler : ((AppResult?) -> ())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .white
@@ -20,6 +22,14 @@ class AppsHorizontalController: HorizontalSnappingController, UICollectionViewDe
 //        if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
 //            layout.scrollDirection = .horizontal
 //        }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let app = topFreeAppsItems?.feed.results[indexPath.item]
+//        print(app?.name ?? "")
+        if let app = app {
+            didSelectHandler?(app)
+        }
     }
     
     

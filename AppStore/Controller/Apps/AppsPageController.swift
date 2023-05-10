@@ -32,7 +32,7 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         activityIndicatorView.fillSuperview()
         fetchData()
     }
-    
+
     fileprivate func fetchData() {
 
         var group1: AppGroup?
@@ -129,6 +129,13 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         cell.titleLabel.text = appGroup.feed.title
         cell.horizontalVC.topFreeAppsItems = appGroup
         cell.horizontalVC.collectionView.reloadData()
+        cell.horizontalVC.didSelectHandler = { [weak self] mck in
+            let VC = AppsDetailController()
+            VC.appID = mck?.id
+            VC.navigationItem.title = mck?.name
+            self?.navigationController?.pushViewController(VC, animated: true)
+            
+        }
         return cell
         
     }
