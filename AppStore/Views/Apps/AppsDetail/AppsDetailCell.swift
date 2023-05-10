@@ -13,7 +13,7 @@ class AppsDetailCell: UICollectionViewCell {
     let nameLabel = UILabel(text: "App Name", font: .boldSystemFont(ofSize: 24), numberOfLines: 2)
     let priceButton = UIButton(title: "$4.99")
     let whatsNewLabel = UILabel(text: "What's New", font: .boldSystemFont(ofSize: 20))
-    let relaseNotLabel = UILabel(text: "Description", font: .systemFont(ofSize: 16), numberOfLines: 4)
+    let relaseNotLabel = UILabel(text: "Description", font: .systemFont(ofSize: 16), numberOfLines: 0)
     
     override init(frame: CGRect) {
         super.init(frame: frame)

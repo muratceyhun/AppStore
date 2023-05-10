@@ -47,11 +47,22 @@ class AppsDetailController: BaseListController, UICollectionViewDelegateFlowLayo
         cell.nameLabel.text = item?.trackName
         cell.priceButton.setTitle(item?.formattedPrice, for: .normal)
         cell.appIconImageView.sd_setImage(with: URL(string: item?.artworkUrl100 ?? ""))
-        cell.relaseNotLabel.text = item?.description
+        cell.relaseNotLabel.text = item?.releaseNotes
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        .init(width: view.frame.width, height: 500)
+        
+        // calculating the necessary size for the cell
+        
+        let dummyCell = AppsDetailCell(frame: .init(x: 0, y: 0, width: view.frame.width, height: 1000))
+        dummyCell.relaseNotLabel.text = items?.results.first?.releaseNotes
+        dummyCell.layoutIfNeeded()
+        
+        let estimatedSize = dummyCell.systemLayoutSizeFitting(.init(width: view.frame.width, height: 1000))
+      
+        
+        return .init(width: view.frame.width, height: estimatedSize.height)
+        
     }
 }
