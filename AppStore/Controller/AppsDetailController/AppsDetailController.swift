@@ -10,6 +10,7 @@ import UIKit
 class AppsDetailController: BaseListController, UICollectionViewDelegateFlowLayout {
     
     let detailCellID = "detailCellID"
+    let previewCellID = "previewCellID"
     
     var items: SearchResult?
     
@@ -26,43 +27,53 @@ class AppsDetailController: BaseListController, UICollectionViewDelegateFlowLayo
             }
         }
     }
-    
-    
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .white
         collectionView.register(AppsDetailCell.self, forCellWithReuseIdentifier: detailCellID)
+        collectionView.register(PreviewCell.self, forCellWithReuseIdentifier: previewCellID)
         navigationItem.largeTitleDisplayMode = .never
     }
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: detailCellID, for: indexPath) as! AppsDetailCell
-        let item = items?.results[indexPath.item]
-        cell.nameLabel.text = item?.trackName
-        cell.priceButton.setTitle(item?.formattedPrice, for: .normal)
-        cell.appIconImageView.sd_setImage(with: URL(string: item?.artworkUrl100 ?? ""))
-        cell.relaseNotLabel.text = item?.releaseNotes
-        return cell
+        
+        if indexPath.item == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: detailCellID, for: indexPath) as! AppsDetailCell
+            let item = items?.results[indexPath.item]
+            cell.nameLabel.text = item?.trackName
+            cell.priceButton.setTitle(item?.formattedPrice, for: .normal)
+            cell.appIconImageView.sd_setImage(with: URL(string: item?.artworkUrl100 ?? ""))
+            cell.relaseNotLabel.text = item?.releaseNotes
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: previewCellID, for: indexPath) as! PreviewCell
+            cell.horizontalVC.items = self.items
+            return cell
+        }
+      
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        // calculating the necessary size for the cell
+        if indexPath.item == 0 {
+            // calculating the necessary size for the cell
+            
+            let dummyCell = AppsDetailCell(frame: .init(x: 0, y: 0, width: view.frame.width, height: 1000))
+            dummyCell.relaseNotLabel.text = items?.results.first?.releaseNotes
+            dummyCell.layoutIfNeeded()
+            let estimatedSize = dummyCell.systemLayoutSizeFitting(.init(width: view.frame.width, height: 1000))
+            return .init(width: view.frame.width, height: estimatedSize.height)
+        } else {
+            return .init(width: collectionView.frame.width, height: 500)
+        }
         
-        let dummyCell = AppsDetailCell(frame: .init(x: 0, y: 0, width: view.frame.width, height: 1000))
-        dummyCell.relaseNotLabel.text = items?.results.first?.releaseNotes
-        dummyCell.layoutIfNeeded()
         
-        let estimatedSize = dummyCell.systemLayoutSizeFitting(.init(width: view.frame.width, height: 1000))
-      
-        
-        return .init(width: view.frame.width, height: estimatedSize.height)
         
     }
 }
