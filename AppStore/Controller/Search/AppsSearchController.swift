@@ -32,6 +32,13 @@ class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayo
         setupSearchBar()
     }
     
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let appID = String(appResults[indexPath.item].trackId ?? .zero)
+        let appDetailController = AppsDetailController(appID: appID)
+        navigationController?.pushViewController(appDetailController, animated: true)
+    }
+    
     fileprivate func setupSearchBar() {
         definesPresentationContext = true
         navigationItem.searchController = self.searchController
@@ -48,6 +55,10 @@ class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayo
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
             
             Service.shared.fetchApps(searchTerm: searchText) { res, error in
+                if let error = error {
+                    print("ERROR: \(error)")
+                    return
+                }
                 self.appResults = res?.results ?? []
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()

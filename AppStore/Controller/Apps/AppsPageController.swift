@@ -130,8 +130,7 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         cell.horizontalVC.topFreeAppsItems = appGroup
         cell.horizontalVC.collectionView.reloadData()
         cell.horizontalVC.didSelectHandler = { [weak self] mck in
-            let VC = AppsDetailController()
-            VC.appID = mck?.id
+            let VC = AppsDetailController(appID: mck?.id ?? "")
             VC.navigationItem.title = mck?.name
             self?.navigationController?.pushViewController(VC, animated: true)
             

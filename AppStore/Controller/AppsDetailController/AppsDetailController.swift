@@ -16,32 +16,21 @@ class AppsDetailController: BaseListController, UICollectionViewDelegateFlowLayo
     var items: SearchResult?
     var reviewItems: Reviews?
     
-    var appID: String! {
-        didSet {
-            print("HERE is my appID: \(appID ?? "")")
-            let urlString = "https://itunes.apple.com/lookup?id=\(appID ?? "")"
-            Service.shared.fetchGenericJSONData(urlString: urlString) { (detailResult: SearchResult?, err) in
-                //                print(detailResult?.results.first?.releaseNotes)
-                self.items = detailResult
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-            }
-            
-            let reviewsUrl = "https://itunes.apple.com/rss/customerreviews/page=1/id=\(appID ?? "")/sortby=mostrecent/json?l0en&cc=tr"
-            Service.shared.fetchGenericJSONData(urlString: reviewsUrl) { (reviewResult: Reviews?, err) in
-                    self.reviewItems = reviewResult
-                reviewResult?.feed.entry.forEach({ print($0.rating.label ?? "","|",  $0.author.name.label ?? "")
-                    
-                })
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-            }
-        }
-        
-        
+    fileprivate let appID: String
+    
+    
+    // Dependency Injection Constructor
+    
+     init(appID: String) {
+         self.appID = appID
+         super.init()
     }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+  
     
 
         
@@ -52,6 +41,29 @@ class AppsDetailController: BaseListController, UICollectionViewDelegateFlowLayo
         collectionView.register(PreviewCell.self, forCellWithReuseIdentifier: previewCellID)
         collectionView.register(ReviewRowCell.self, forCellWithReuseIdentifier: reviewCellID)
         navigationItem.largeTitleDisplayMode = .never
+        fetchData()
+    }
+    
+    fileprivate func fetchData() {
+        let urlString = "https://itunes.apple.com/lookup?id=\(appID)"
+        Service.shared.fetchGenericJSONData(urlString: urlString) { (detailResult: SearchResult?, err) in
+            //                print(detailResult?.results.first?.releaseNotes)
+            self.items = detailResult
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+        
+        let reviewsUrl = "https://itunes.apple.com/rss/customerreviews/page=1/id=\(appID)/sortby=mostrecent/json?l0en&cc=tr"
+        Service.shared.fetchGenericJSONData(urlString: reviewsUrl) { (reviewResult: Reviews?, err) in
+                self.reviewItems = reviewResult
+            reviewResult?.feed.entry.forEach({ print($0.rating.label ?? "","|",  $0.author.name.label ?? "")
+                
+            })
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
     }
     
     
