@@ -41,6 +41,10 @@
 		439F0EC829FC6AFA00440EF9 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439F0EC729FC6AFA00440EF9 /* Service.swift */; };
 		43BA4CE72A07EED000FF4878 /* HorizontalSnappingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BA4CE62A07EED000FF4878 /* HorizontalSnappingController.swift */; };
 		43BA4CE92A08032900FF4878 /* BetterSnappingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BA4CE82A08032900FF4878 /* BetterSnappingLayout.swift */; };
+		43DFFA602A136EE6005137B8 /* TodayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DFFA5F2A136EE6005137B8 /* TodayController.swift */; };
+		43DFFA632A137914005137B8 /* TodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DFFA622A137914005137B8 /* TodayCell.swift */; };
+		43DFFA652A13A639005137B8 /* AppsFullScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DFFA642A13A639005137B8 /* AppsFullScreenController.swift */; };
+		43DFFA672A13BDBA005137B8 /* AppsFullscreenDesciptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DFFA662A13BDBA005137B8 /* AppsFullscreenDesciptionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +83,10 @@
 		439F0EC729FC6AFA00440EF9 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		43BA4CE62A07EED000FF4878 /* HorizontalSnappingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalSnappingController.swift; sourceTree = "<group>"; };
 		43BA4CE82A08032900FF4878 /* BetterSnappingLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterSnappingLayout.swift; sourceTree = "<group>"; };
+		43DFFA5F2A136EE6005137B8 /* TodayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayController.swift; sourceTree = "<group>"; };
+		43DFFA622A137914005137B8 /* TodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCell.swift; sourceTree = "<group>"; };
+		43DFFA642A13A639005137B8 /* AppsFullScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsFullScreenController.swift; sourceTree = "<group>"; };
+		43DFFA662A13BDBA005137B8 /* AppsFullscreenDesciptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsFullscreenDesciptionCell.swift; sourceTree = "<group>"; };
 		75CCA8E3F52E260189711E05 /* Pods-AppStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStore.release.xcconfig"; path = "Target Support Files/Pods-AppStore/Pods-AppStore.release.xcconfig"; sourceTree = "<group>"; };
 		86176CCCD63A0FC0049CAF8C /* Pods-AppStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStore.debug.xcconfig"; path = "Target Support Files/Pods-AppStore/Pods-AppStore.debug.xcconfig"; sourceTree = "<group>"; };
 		D24F039138F1C226613EA333 /* Pods_AppStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,6 +146,7 @@
 		4345CF3E29FAD6040059F907 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				43DFFA612A137901005137B8 /* Today */,
 				432395792A001AED00FE0008 /* Apps */,
 				432395782A001ADF00FE0008 /* Search */,
 			);
@@ -196,8 +205,9 @@
 			isa = PBXGroup;
 			children = (
 				434EB9B729F99A5C00418A96 /* MainTabBarController.swift */,
-				432395762A00182F00FE0008 /* Search */,
+				43DFFA5E2A136ED6005137B8 /* Today */,
 				432395712A0015C300FE0008 /* Apps */,
+				432395762A00182F00FE0008 /* Search */,
 				435085882A0A95F900C8D2F2 /* AppsDetailController */,
 			);
 			path = Controller;
@@ -241,6 +251,24 @@
 				439F0EC729FC6AFA00440EF9 /* Service.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		43DFFA5E2A136ED6005137B8 /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				43DFFA5F2A136EE6005137B8 /* TodayController.swift */,
+				43DFFA642A13A639005137B8 /* AppsFullScreenController.swift */,
+			);
+			path = Today;
+			sourceTree = "<group>";
+		};
+		43DFFA612A137901005137B8 /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				43DFFA622A137914005137B8 /* TodayCell.swift */,
+				43DFFA662A13BDBA005137B8 /* AppsFullscreenDesciptionCell.swift */,
+			);
+			path = Today;
 			sourceTree = "<group>";
 		};
 		DA5E82295DBB9AB68995A73F /* Frameworks */ = {
@@ -374,14 +402,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43DFFA652A13A639005137B8 /* AppsFullScreenController.swift in Sources */,
 				434D14EA29F867C5003C7216 /* ViewController.swift in Sources */,
 				435085992A0D6D9100C8D2F2 /* ReviewCell.swift in Sources */,
 				432395732A0015DB00FE0008 /* AppsPageController.swift in Sources */,
 				439C9FEE2A017D0800D5F52A /* Convenience Init.swift in Sources */,
 				439F0EC529FC449A00440EF9 /* SearchResult.swift in Sources */,
+				43DFFA672A13BDBA005137B8 /* AppsFullscreenDesciptionCell.swift in Sources */,
 				4350859B2A0EC85E00C8D2F2 /* ReviewResult.swift in Sources */,
 				435085912A0CFA3A00C8D2F2 /* PreviewScreenshotsController.swift in Sources */,
 				434D14E629F867C5003C7216 /* AppDelegate.swift in Sources */,
+				43DFFA632A137914005137B8 /* TodayCell.swift in Sources */,
 				434EB9B829F99A5C00418A96 /* MainTabBarController.swift in Sources */,
 				432689CF2A06E288004E09C0 /* HeaderResult.swift in Sources */,
 				434EB9BB29F9DAAF00418A96 /* AppsSearchController.swift in Sources */,
@@ -395,6 +426,7 @@
 				435EF7072A02DC77008F841A /* AppsHeaderHorizontalController.swift in Sources */,
 				435EF7052A02D60D008F841A /* AppsPageHeader.swift in Sources */,
 				4350858D2A0AC38B00C8D2F2 /* AppsDetailCell.swift in Sources */,
+				43DFFA602A136EE6005137B8 /* TodayController.swift in Sources */,
 				439F0EC829FC6AFA00440EF9 /* Service.swift in Sources */,
 				4345CF4329FB16530059F907 /* UIView+Layout.swift in Sources */,
 				432395752A0016BC00FE0008 /* BaseListController.swift in Sources */,

@@ -50,7 +50,7 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         Service.shared.fetchTopFreeApps { appGroup, error in
 
             dispatchGroup.leave()
-            print("TopFreeApp")
+//            print("TopFreeApp")
             if let error = error {
                 print("ERROR: \(error)")
             }
@@ -60,7 +60,7 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         dispatchGroup.enter()
         Service.shared.fetchTopMusicAlbums { appGroup, error in
             dispatchGroup.leave()
-            print("TopMusic")
+//            print("TopMusic")
             if let error = error {
                 print("ERROR: \(error)")
             }
@@ -70,7 +70,7 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         dispatchGroup.enter()
         Service.shared.fetchTopPodcasts { appGroup, error in
             dispatchGroup.leave()
-            print("TopPodcast")
+//            print("TopPodcast")
 
             if let error = error {
                 print("ERROR: \(error)")
@@ -89,7 +89,7 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         }
         
         dispatchGroup.notify(queue: .main) {
-            print("Completed Dispatch Group Task...")
+//            print("Completed Dispatch Group Task...")
             
             self.activityIndicatorView.stopAnimating()
 

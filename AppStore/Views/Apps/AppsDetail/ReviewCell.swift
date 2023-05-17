@@ -31,7 +31,7 @@ class ReviewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .lightGray
+        backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         layer.cornerRadius = 16
         
         let stackView = VerticalStackView(arrangedSubviews: [UIStackView(arrangedSubviews: [titleLabel, authorLabel], customSpacing: 8), starStackView, bodyLabel], spacing: 12)
