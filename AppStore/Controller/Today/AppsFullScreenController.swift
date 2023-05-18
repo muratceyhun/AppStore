@@ -21,11 +21,7 @@ class AppsFullScreenController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            let cell = UITableViewCell()
-            let todayCell = TodayCell()
-            cell.addSubview(todayCell)
-            todayCell.fillSuperview()
-            return cell
+            return AppFullscreenHeaderCell()
         }
         let cell = AppsFulscreenDescriptionCell(style: .default, reuseIdentifier: nil)
         return cell
@@ -37,9 +33,9 @@ class AppsFullScreenController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.row == 0 {
-            return 300
-        } else {
             return 450
+        } else {
+            return super.tableView(tableView, heightForRowAt: indexPath)
         }
     }
 //    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
