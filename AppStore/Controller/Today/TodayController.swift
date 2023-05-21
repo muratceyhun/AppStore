@@ -9,19 +9,31 @@ import UIKit
 
 class TodayController: BaseListController,UICollectionViewDelegateFlowLayout {
     
-    fileprivate let cellID = "cellID"
-    let items = [TodayItem.init(category: "LIFE HACK", title: "Utilizing your time",
+//    fileprivate let cellID = "cellID"
+//    fileprivate let multipleCellID = "multipleCellID"
+    let items = [TodayItem.init(category: "LIFE HACK", title: "Test-Drive These CarPlay Apps",
                                 image: UIImage(named: "garden")!,
                                 description: "All the tools and apps you need to intelligently organize your life the right way.",
-                                backgroundColor: .white),
-                 TodayItem.init(category: "HOLIDAYS", title: "Travel on a budget",
+                                backgroundColor: .white, cellType: .single),
+                 TodayItem.init(category: "SECOND CELL", title: "Test-Drive These CarPlay Apps",
+                                             image: UIImage(named: "garden")!,
+                                             description: "All the tools and apps you need to intelligently organize your life the right way.",
+                                             backgroundColor: .white, cellType: .multiple),
+                 TodayItem.init(category: "HOLIDAYS", title: "Utilizing your time",
+                                image: UIImage(named: "garden")!,
+                                description: "All the tools and apps you need to intelligently organize your life the right way.",
+                                backgroundColor: .white, cellType: .single),
+                 TodayItem.init(category: "MULTIPLE CELL", title: "Travel on a budget",
                                 image: UIImage(named: "holiday")!,
                                 description: "Find out all you need to know on how to travel without packing everything!",
-                                backgroundColor: #colorLiteral(red: 0.9838810563, green: 0.9640342593, blue: 0.7226806879, alpha: 1))]
+                                backgroundColor: #colorLiteral(red: 0.9838810563, green: 0.9640342593, blue: 0.7226806879, alpha: 1), cellType: .multiple)]
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         collectionView.backgroundColor = #colorLiteral(red: 0.9490196109, green: 0.9490197301, blue: 0.9490196109, alpha: 1)
-        collectionView.register(TodayCell.self, forCellWithReuseIdentifier: cellID)
+        collectionView.register(TodayCell.self, forCellWithReuseIdentifier: TodayItem.CellType.single.rawValue)
+        collectionView.register(TodayMultipleAppCell.self, forCellWithReuseIdentifier: TodayItem.CellType.multiple.rawValue)
         navigationController?.isNavigationBarHidden = true
     }
     
@@ -102,10 +114,21 @@ class TodayController: BaseListController,UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! TodayCell
+        
+        let cellID = items[indexPath.item].cellType.rawValue
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! BaseTodayCell
         cell.todayItems = items[indexPath.item]
-        cell.layer.cornerRadius = 16
         return cell
+//        if indexPath.item == 0 {
+//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: multipleCellID, for: indexPath) as! TodayMultipleAppCell
+//            cell.todayItem = items[indexPath.item]
+//            return cell
+//        }
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! TodayCell
+//        cell.todayItems = items[indexPath.item]
+//        cell.layer.cornerRadius = 16
+//        return cell
     }
     
     

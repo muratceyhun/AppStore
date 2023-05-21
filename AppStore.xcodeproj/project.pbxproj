@@ -47,6 +47,8 @@
 		43DFFA632A137914005137B8 /* TodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DFFA622A137914005137B8 /* TodayCell.swift */; };
 		43DFFA652A13A639005137B8 /* AppsFullScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DFFA642A13A639005137B8 /* AppsFullScreenController.swift */; };
 		43DFFA672A13BDBA005137B8 /* AppsFullscreenDesciptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DFFA662A13BDBA005137B8 /* AppsFullscreenDesciptionCell.swift */; };
+		43F056B92A1A476300478DEB /* TodayMultipleAppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F056B82A1A476300478DEB /* TodayMultipleAppCell.swift */; };
+		43F056BB2A1A771700478DEB /* BaseTodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F056BA2A1A771700478DEB /* BaseTodayCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +93,8 @@
 		43DFFA622A137914005137B8 /* TodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCell.swift; sourceTree = "<group>"; };
 		43DFFA642A13A639005137B8 /* AppsFullScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsFullScreenController.swift; sourceTree = "<group>"; };
 		43DFFA662A13BDBA005137B8 /* AppsFullscreenDesciptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsFullscreenDesciptionCell.swift; sourceTree = "<group>"; };
+		43F056B82A1A476300478DEB /* TodayMultipleAppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayMultipleAppCell.swift; sourceTree = "<group>"; };
+		43F056BA2A1A771700478DEB /* BaseTodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTodayCell.swift; sourceTree = "<group>"; };
 		75CCA8E3F52E260189711E05 /* Pods-AppStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStore.release.xcconfig"; path = "Target Support Files/Pods-AppStore/Pods-AppStore.release.xcconfig"; sourceTree = "<group>"; };
 		86176CCCD63A0FC0049CAF8C /* Pods-AppStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStore.debug.xcconfig"; path = "Target Support Files/Pods-AppStore/Pods-AppStore.debug.xcconfig"; sourceTree = "<group>"; };
 		D24F039138F1C226613EA333 /* Pods_AppStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -273,6 +277,8 @@
 				43DFFA622A137914005137B8 /* TodayCell.swift */,
 				43DFFA662A13BDBA005137B8 /* AppsFullscreenDesciptionCell.swift */,
 				432A80C42A16B41C000E8F8A /* AppFullscreenHeaderCell.swift */,
+				43F056B82A1A476300478DEB /* TodayMultipleAppCell.swift */,
+				43F056BA2A1A771700478DEB /* BaseTodayCell.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -414,6 +420,7 @@
 				432395732A0015DB00FE0008 /* AppsPageController.swift in Sources */,
 				439C9FEE2A017D0800D5F52A /* Convenience Init.swift in Sources */,
 				439F0EC529FC449A00440EF9 /* SearchResult.swift in Sources */,
+				43F056BB2A1A771700478DEB /* BaseTodayCell.swift in Sources */,
 				43DFFA672A13BDBA005137B8 /* AppsFullscreenDesciptionCell.swift in Sources */,
 				4350859B2A0EC85E00C8D2F2 /* ReviewResult.swift in Sources */,
 				435085912A0CFA3A00C8D2F2 /* PreviewScreenshotsController.swift in Sources */,
@@ -425,6 +432,7 @@
 				432A80C52A16B41C000E8F8A /* AppFullscreenHeaderCell.swift in Sources */,
 				434EB9BB29F9DAAF00418A96 /* AppsSearchController.swift in Sources */,
 				435085932A0D67E500C8D2F2 /* ReviewRowCell.swift in Sources */,
+				43F056B92A1A476300478DEB /* TodayMultipleAppCell.swift in Sources */,
 				4350858A2A0A965A00C8D2F2 /* AppsDetailController.swift in Sources */,
 				4323957B2A001B0700FE0008 /* AppsGroupCell.swift in Sources */,
 				43BA4CE72A07EED000FF4878 /* HorizontalSnappingController.swift in Sources */,
