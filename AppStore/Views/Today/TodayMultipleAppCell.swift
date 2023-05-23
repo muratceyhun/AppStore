@@ -18,12 +18,11 @@ class TodayMultipleAppCell: BaseTodayCell {
     
     let categoryLabel = UILabel(text: "LIFE HACK", font: .boldSystemFont(ofSize: 20))
     let titleLabel = UILabel(text: "Utilizing your time", font: .boldSystemFont(ofSize: 26), numberOfLines: 3)
-    let multipleAppController = UIViewController()
+    let multipleAppController = TodayMultipleAppController()
     
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        multipleAppController.view.backgroundColor = .green
         multipleAppController.view.layer.cornerRadius = 24
         backgroundColor = .white
         layer.cornerRadius = 16
