@@ -16,13 +16,13 @@ class TodayMultipleAppController: BaseListController, UICollectionViewDelegateFl
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(MultipleAppCell.self, forCellWithReuseIdentifier: cellID)
-        Service.shared.fetchTopPodcasts { appItems, error in
-            self.appItems = appItems?.feed.results ?? []
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-                self.collectionView.isScrollEnabled = false
-            }
-        }
+//        Service.shared.fetchTopPodcasts { appItems, error in
+//            self.appItems = appItems?.feed.results ?? []
+//            DispatchQueue.main.async {
+//                self.collectionView.reloadData()
+//                self.collectionView.isScrollEnabled = false
+//            }
+//        }
     }
   
 
@@ -49,7 +49,4 @@ class TodayMultipleAppController: BaseListController, UICollectionViewDelegateFl
         let height: CGFloat = ( collectionView.frame.height - 3 * spacing ) / 4
         return .init(width: collectionView.frame.width, height: height)
     }
-    
-    
-    
 }

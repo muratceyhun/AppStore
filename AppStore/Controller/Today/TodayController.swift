@@ -11,32 +11,32 @@ class TodayController: BaseListController,UICollectionViewDelegateFlowLayout {
     
     fileprivate let cellID = "cellID"
     fileprivate let multipleCellID = "multipleCellID"
-    var items = [TodayItem.init(category: "LIFE HACK", title: "Test-Drive These CarPlay Apps",
-                                image: UIImage(named: "garden")!,
-                                description: "All the tools and apps you need to intelligently organize your life the right way.",
-                                backgroundColor: .white, cellType: .single),
-                 TodayItem.init(category: "SECOND CELL", title: "Test-Drive These CarPlay Apps",
-                                             image: UIImage(named: "garden")!,
-                                             description: "All the tools and apps you need to intelligently organize your life the right way.",
-                                             backgroundColor: .white, cellType: .multiple),
-                 TodayItem.init(category: "HOLIDAYS", title: "Utilizing your time",
-                                image: UIImage(named: "garden")!,
-                                description: "All the tools and apps you need to intelligently organize your life the right way.",
-                                backgroundColor: .white, cellType: .single),
-                 TodayItem.init(category: "MULTIPLE CELL", title: "Travel on a budget",
-                                image: UIImage(named: "holiday")!,
-                                description: "Find out all you need to know on how to travel without packing everything!",
-                                backgroundColor: #colorLiteral(red: 0.9838810563, green: 0.9640342593, blue: 0.7226806879, alpha: 1), cellType: .multiple)]
+//    var items = [TodayItem.init(category: "LIFE HACK", title: "Test-Drive These CarPlay Apps",
+//                                image: UIImage(named: "garden")!,
+//                                description: "All the tools and apps you need to intelligently organize your life the right way.",
+//                                backgroundColor: .white, cellType: .single),
+//                 TodayItem.init(category: "SECOND CELL", title: "Test-Drive These CarPlay Apps",
+//                                             image: UIImage(named: "garden")!,
+//                                             description: "All the tools and apps you need to intelligently organize your life the right way.",
+//                                             backgroundColor: .white, cellType: .multiple),
+//                 TodayItem.init(category: "HOLIDAYS", title: "Utilizing your time",
+//                                image: UIImage(named: "holiday")!,
+//                                description: "All the tools and apps you need to intelligently organize your life the right way.",
+//                                backgroundColor: #colorLiteral(red: 0.9847376943, green: 0.9599434733, blue: 0.7276356816, alpha: 1), cellType: .single),
+//                 TodayItem.init(category: "MULTIPLE CELL", title: "Travel on a budget",
+//                                image: UIImage(named: "holiday")!,
+//                                description: "Find out all you need to know on how to travel without packing everything!",
+//                                backgroundColor: #colorLiteral(red: 0.9838810563, green: 0.9640342593, blue: 0.7226806879, alpha: 1), cellType: .multiple)]
     
-//    var items = [TodayItem]()
-//
-//    let activityIndicatorView: UIActivityIndicatorView = {
-//        let aiv = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
-//        aiv.color = .black
-//        aiv.startAnimating()
-//        aiv.hidesWhenStopped = true
-//        return aiv
-//    }()
+    var items = [TodayItem]()
+
+    let activityIndicatorView: UIActivityIndicatorView = {
+        let aiv = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+        aiv.color = .black
+        aiv.startAnimating()
+        aiv.hidesWhenStopped = true
+        return aiv
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,9 +46,9 @@ class TodayController: BaseListController,UICollectionViewDelegateFlowLayout {
         collectionView.register(TodayCell.self, forCellWithReuseIdentifier: TodayItem.CellType.single.rawValue)
         collectionView.register(TodayMultipleAppCell.self, forCellWithReuseIdentifier: TodayItem.CellType.multiple.rawValue)
         navigationController?.isNavigationBarHidden = true
-//        view.addSubview(activityIndicatorView)
-//        activityIndicatorView.centerInSuperview()
-//        fetchData()
+        view.addSubview(activityIndicatorView)
+        activityIndicatorView.centerInSuperview()
+        fetchData()
     }
     
     fileprivate func fetchData() {
@@ -71,12 +71,12 @@ class TodayController: BaseListController,UICollectionViewDelegateFlowLayout {
         }
         
         dispatchGroup.notify(queue: .main) {
-//            self.activityIndicatorView.stopAnimating()
+            self.activityIndicatorView.stopAnimating()
             print("Finished Fetching...")
             self.items = [
-                TodayItem.init(category: "Daily List", title: topMusicAlbums?.feed.title ?? "", image: UIImage(named: "garden")!, description: "", backgroundColor:  .white, cellType: .multiple),
-                TodayItem.init(category: "Daily List", title: topPodcasts?.feed.title ?? "", image: UIImage(named: "garden")!, description: "", backgroundColor:  .white, cellType: .multiple),
-                TodayItem.init(category: "LIFE HACK", title: "Test-Drive These CarPlay Apps", image: UIImage(named: "garden")!, description: "All the tools and apps you need to intelligently organize your life the right way.", backgroundColor: .white, cellType: .single)
+                TodayItem.init(category: "Daily List", title: topMusicAlbums?.feed.title ?? "", image: UIImage(named: "garden")!, description: "", backgroundColor:  .white, cellType: .multiple, apps: topMusicAlbums?.feed.results ?? []),
+                TodayItem.init(category: "Daily List", title: topPodcasts?.feed.title ?? "", image: UIImage(named: "garden")!, description: "", backgroundColor:  .white, cellType: .multiple, apps: topPodcasts?.feed.results ?? []),
+                TodayItem.init(category: "LIFE HACK", title: "Test-Drive These CarPlay Apps", image: UIImage(named: "garden")!, description: "All the tools and apps you need to intelligently organize your life the right way.", backgroundColor: .white, cellType: .single, apps: [])
             ]
             self.collectionView.reloadData()
             
