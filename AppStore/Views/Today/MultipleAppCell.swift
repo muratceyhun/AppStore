@@ -9,11 +9,17 @@ import UIKit
 
 class MultipleAppCell: UICollectionViewCell {
     
-    let imageView = UIImageView(cornerRadius: 8)
+    var app: AppResult! {
+        didSet {
+            nameLabel.text = app.name
+            companyName.text = app.artistName
+            imageView.sd_setImage(with: URL(string: app.artworkUrl100))
+        }
+    }
     
+    let imageView = UIImageView(cornerRadius: 8)
     let nameLabel = UILabel(text: "App Name", font: .boldSystemFont(ofSize: 16))
     let companyName = UILabel(text: "Company Name", font: .boldSystemFont(ofSize: 12))
-    
     let getButton = UIButton(title: "GET")
     
     let separatorView: UIView = {
