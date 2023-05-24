@@ -9,7 +9,7 @@ import UIKit
 
 class TodayMultipleAppController: BaseListController, UICollectionViewDelegateFlowLayout {
     
-    var appItems: AppGroup?
+    var appItems = [AppResult]()
     
     fileprivate let cellID = "cellID"
     
@@ -17,28 +17,22 @@ class TodayMultipleAppController: BaseListController, UICollectionViewDelegateFl
         super.viewDidLoad()
         collectionView.register(MultipleAppCell.self, forCellWithReuseIdentifier: cellID)
         Service.shared.fetchTopPodcasts { appItems, error in
-            self.appItems = appItems
+            self.appItems = appItems?.feed.results ?? []
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
                 self.collectionView.isScrollEnabled = false
-
             }
-            
         }
     }
   
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return min(4, appItems?.feed.results.count ?? .zero)
-//        return appItems?.feed.results.count ?? .zero
+        return min(4, appItems.count)
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! MultipleAppCell
-        let appItem = appItems?.feed.results[indexPath.item]
-        cell.nameLabel.text = appItem?.name
-        cell.companyName.text = appItem?.artistName
-        cell.imageView.sd_setImage(with: URL(string: appItem?.artworkUrl100 ?? ""))
+        cell.app = appItems[indexPath.item]
         collectionView.reloadData()
         return cell
     }

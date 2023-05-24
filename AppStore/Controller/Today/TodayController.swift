@@ -9,9 +9,9 @@ import UIKit
 
 class TodayController: BaseListController,UICollectionViewDelegateFlowLayout {
     
-//    fileprivate let cellID = "cellID"
-//    fileprivate let multipleCellID = "multipleCellID"
-    let items = [TodayItem.init(category: "LIFE HACK", title: "Test-Drive These CarPlay Apps",
+    fileprivate let cellID = "cellID"
+    fileprivate let multipleCellID = "multipleCellID"
+    var items = [TodayItem.init(category: "LIFE HACK", title: "Test-Drive These CarPlay Apps",
                                 image: UIImage(named: "garden")!,
                                 description: "All the tools and apps you need to intelligently organize your life the right way.",
                                 backgroundColor: .white, cellType: .single),
@@ -27,6 +27,17 @@ class TodayController: BaseListController,UICollectionViewDelegateFlowLayout {
                                 image: UIImage(named: "holiday")!,
                                 description: "Find out all you need to know on how to travel without packing everything!",
                                 backgroundColor: #colorLiteral(red: 0.9838810563, green: 0.9640342593, blue: 0.7226806879, alpha: 1), cellType: .multiple)]
+    
+//    var items = [TodayItem]()
+//
+//    let activityIndicatorView: UIActivityIndicatorView = {
+//        let aiv = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+//        aiv.color = .black
+//        aiv.startAnimating()
+//        aiv.hidesWhenStopped = true
+//        return aiv
+//    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,6 +46,41 @@ class TodayController: BaseListController,UICollectionViewDelegateFlowLayout {
         collectionView.register(TodayCell.self, forCellWithReuseIdentifier: TodayItem.CellType.single.rawValue)
         collectionView.register(TodayMultipleAppCell.self, forCellWithReuseIdentifier: TodayItem.CellType.multiple.rawValue)
         navigationController?.isNavigationBarHidden = true
+//        view.addSubview(activityIndicatorView)
+//        activityIndicatorView.centerInSuperview()
+//        fetchData()
+    }
+    
+    fileprivate func fetchData() {
+        
+        let dispatchGroup = DispatchGroup()
+        
+        var topMusicAlbums: AppGroup?
+        var topPodcasts: AppGroup?
+        
+        dispatchGroup.enter()
+        Service.shared.fetchTopMusicAlbums { appGroups, error in
+            topMusicAlbums = appGroups
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.enter()
+        Service.shared.fetchTopPodcasts { appGroups, error in
+            topPodcasts = appGroups
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+//            self.activityIndicatorView.stopAnimating()
+            print("Finished Fetching...")
+            self.items = [
+                TodayItem.init(category: "Daily List", title: topMusicAlbums?.feed.title ?? "", image: UIImage(named: "garden")!, description: "", backgroundColor:  .white, cellType: .multiple),
+                TodayItem.init(category: "Daily List", title: topPodcasts?.feed.title ?? "", image: UIImage(named: "garden")!, description: "", backgroundColor:  .white, cellType: .multiple),
+                TodayItem.init(category: "LIFE HACK", title: "Test-Drive These CarPlay Apps", image: UIImage(named: "garden")!, description: "All the tools and apps you need to intelligently organize your life the right way.", backgroundColor: .white, cellType: .single)
+            ]
+            self.collectionView.reloadData()
+            
+        }
     }
     
     var appsFullscreenController = AppsFullScreenController()
