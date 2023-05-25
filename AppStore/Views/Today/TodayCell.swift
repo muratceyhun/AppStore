@@ -11,7 +11,7 @@ class TodayCell: BaseTodayCell {
     
     override var todayItems: TodayItem! {
         didSet {
-            categoryLabel.text = todayItems.category
+            categoryLabel.text = todayItems.category 
             imageView.image = todayItems.image
             titleLabel.text = todayItems.title
             descriptionLabel.text = todayItems.description
@@ -37,7 +37,7 @@ class TodayCell: BaseTodayCell {
         stackView.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 0, left: 16, bottom: 16, right: 16))
         self.topConstraint = stackView.topAnchor.constraint(equalTo: topAnchor, constant: 24)
         topConstraint.isActive = true
-        
+        layer.cornerRadius = 16
         imageView.contentMode = .scaleAspectFill
         backgroundColor = .white
     }

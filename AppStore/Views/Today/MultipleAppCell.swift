@@ -32,6 +32,7 @@ class MultipleAppCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
+        
         imageView.backgroundColor = .black
         //        imageView.widthAnchor.constraint(equalToConstant: 64).isActive = true
         //        imageView.heightAnchor.constraint(equalToConstant: 64).isActive = true
