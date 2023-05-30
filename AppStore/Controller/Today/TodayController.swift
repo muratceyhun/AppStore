@@ -41,7 +41,6 @@ class TodayController: BaseListController,UICollectionViewDelegateFlowLayout {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         collectionView.backgroundColor = #colorLiteral(red: 0.9490196109, green: 0.9490197301, blue: 0.9490196109, alpha: 1)
         collectionView.register(TodayCell.self, forCellWithReuseIdentifier: TodayItem.CellType.single.rawValue)
         collectionView.register(TodayMultipleAppCell.self, forCellWithReuseIdentifier: TodayItem.CellType.multiple.rawValue)
@@ -96,11 +95,20 @@ class TodayController: BaseListController,UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+//        if items[indexPath.item].cellType == .multiple {
+//            let vc = TodayMultipleAppController(mode: .fullscreen)
+//            vc.appItems = self.items[indexPath.item].apps
+//            vc.modalPresentationStyle = .fullScreen
+//            present(vc, animated: true)
+//            return
+//        }
+        
         if items[indexPath.item].cellType == .multiple {
-            let vc = TodayMultipleAppController(mode: .fullscreen)
-            vc.appItems = self.items[indexPath.item].apps
-            vc.modalPresentationStyle = .fullScreen
-            present(vc, animated: true)
+          let appFullscreenController = TodayMultipleAppController(mode: .fullscreen)
+          let fullscreenNavigationController = UINavigationController(rootViewController: appFullscreenController)
+            appFullscreenController.appItems = items[indexPath.item].apps
+          fullscreenNavigationController.modalPresentationStyle = .fullScreen
+          navigationController?.present(fullscreenNavigationController, animated: true)
             return
         }
         

@@ -24,28 +24,21 @@ class TodayMultipleAppController: BaseListController, UICollectionViewDelegateFl
         print("41412412142412")
     }
     
-        
-    
+   
     fileprivate let cellID = "cellID"
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.register(MultipleAppCell.self, forCellWithReuseIdentifier: cellID)
-//        Service.shared.fetchTopPodcasts { appItems, error in
-//            self.appItems = appItems?.feed.results ?? []
-//            DispatchQueue.main.async {
-//                self.collectionView.reloadData()
-//                self.collectionView.isScrollEnabled = false
-//            }
-//        }
         
         if mode == .fullscreen {
             setupCloseButton()
         } else {
             collectionView.isScrollEnabled = false
         }
+
+        collectionView.register(MultipleAppCell.self, forCellWithReuseIdentifier: cellID)
+        navigationController?.isNavigationBarHidden = true
     }
-     
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -61,8 +54,8 @@ class TodayMultipleAppController: BaseListController, UICollectionViewDelegateFl
         view.addSubview(closeButton)
         closeButton.anchor(top: view.topAnchor, leading: nil, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 24, left: 0, bottom: 0, right: 24), size: .init(width: 44, height: 44))
     }
-  
-
+    
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if mode == .small {
             return min(4, appItems.count)
@@ -77,6 +70,8 @@ class TodayMultipleAppController: BaseListController, UICollectionViewDelegateFl
         collectionView.reloadData()
         return cell
     }
+    
+   
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
