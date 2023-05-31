@@ -49,6 +49,7 @@
 		43DFFA632A137914005137B8 /* TodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DFFA622A137914005137B8 /* TodayCell.swift */; };
 		43DFFA652A13A639005137B8 /* AppsFullScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DFFA642A13A639005137B8 /* AppsFullScreenController.swift */; };
 		43DFFA672A13BDBA005137B8 /* AppsFullscreenDesciptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DFFA662A13BDBA005137B8 /* AppsFullscreenDesciptionCell.swift */; };
+		43EEB01C2A27A7F800F9E74F /* BackEnabledNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EEB01B2A27A7F800F9E74F /* BackEnabledNavController.swift */; };
 		43F056B92A1A476300478DEB /* TodayMultipleAppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F056B82A1A476300478DEB /* TodayMultipleAppCell.swift */; };
 		43F056BB2A1A771700478DEB /* BaseTodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F056BA2A1A771700478DEB /* BaseTodayCell.swift */; };
 /* End PBXBuildFile section */
@@ -97,6 +98,7 @@
 		43DFFA622A137914005137B8 /* TodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCell.swift; sourceTree = "<group>"; };
 		43DFFA642A13A639005137B8 /* AppsFullScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsFullScreenController.swift; sourceTree = "<group>"; };
 		43DFFA662A13BDBA005137B8 /* AppsFullscreenDesciptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsFullscreenDesciptionCell.swift; sourceTree = "<group>"; };
+		43EEB01B2A27A7F800F9E74F /* BackEnabledNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackEnabledNavController.swift; sourceTree = "<group>"; };
 		43F056B82A1A476300478DEB /* TodayMultipleAppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayMultipleAppCell.swift; sourceTree = "<group>"; };
 		43F056BA2A1A771700478DEB /* BaseTodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTodayCell.swift; sourceTree = "<group>"; };
 		75CCA8E3F52E260189711E05 /* Pods-AppStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStore.release.xcconfig"; path = "Target Support Files/Pods-AppStore/Pods-AppStore.release.xcconfig"; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				43DFFA5F2A136EE6005137B8 /* TodayController.swift */,
 				43DFFA642A13A639005137B8 /* AppsFullScreenController.swift */,
 				4359C15E2A1D205F007355D9 /* TodayMultipleAppController.swift */,
+				43EEB01B2A27A7F800F9E74F /* BackEnabledNavController.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				435EF7052A02D60D008F841A /* AppsPageHeader.swift in Sources */,
 				4350858D2A0AC38B00C8D2F2 /* AppsDetailCell.swift in Sources */,
 				43DFFA602A136EE6005137B8 /* TodayController.swift in Sources */,
+				43EEB01C2A27A7F800F9E74F /* BackEnabledNavController.swift in Sources */,
 				4359C1612A1D2184007355D9 /* MultipleAppCell.swift in Sources */,
 				439F0EC829FC6AFA00440EF9 /* Service.swift in Sources */,
 				4345CF4329FB16530059F907 /* UIView+Layout.swift in Sources */,
